@@ -8,10 +8,14 @@ f = open('aoc08.txt','rt')
 for line in f:
     raw_input += [line.strip()]
 f.close()
+
 def distance(pair):
     p1, p2 = pair
     distance = sqrt((p2.x - p1.x)**2 + (p2.y-p1.y)**2 + (p2.z-p1.z)**2)
     return distance
+
+G = nx.Graph()
+
 point_pairs = []
 points = []
 for line in raw_input:
@@ -22,8 +26,6 @@ for i, p1 in enumerate(points):
         point_pairs += [(p1, p2)]
 point_pairs.sort(key=lambda pair:distance(pair))
 
-# Take the top 10 pairs
-G = nx.Graph()
 for pair in point_pairs[:1000]:
     G.add_edge(pair[0], pair[1])
 circuits = list(nx.connected_components(G))
@@ -33,6 +35,8 @@ for item in circuits[::-1]:
     circuit_lengths += [len(item)]
 part1 = circuit_lengths[0] * circuit_lengths[1] * circuit_lengths[2]
 print('Part 1: ' + str(part1))
+
+
 final_pair = None
 for pair in point_pairs[1000:]:
     G.add_edge(pair[0], pair[1])
