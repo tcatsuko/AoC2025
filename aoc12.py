@@ -1,5 +1,5 @@
 raw_input = []
-f = open('aoc12.txt.','rt')
+f = open('aoc12.txt','rt')
 for line in f:
     raw_input += [line.strip()]
 f.close()
