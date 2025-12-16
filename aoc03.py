@@ -36,4 +36,4 @@ for bank in battery_banks:
 
     bank_joltage = joltage(bank, batteries)
     output_joltage += bank_joltage
-print('Part 1: ' + str(output_joltage))
+print('Part 2: ' + str(output_joltage))
